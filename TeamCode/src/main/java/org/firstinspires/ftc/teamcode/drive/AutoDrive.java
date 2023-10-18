@@ -11,12 +11,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 @Config
 public class AutoDrive extends LinearOpMode {
 
-    public static double DISTANCE1 = 1;
-    public static double DISTANCE2 = 1;
-
-
-
-
     @Override
     public void runOpMode() throws InterruptedException {
 
@@ -41,12 +35,11 @@ public class AutoDrive extends LinearOpMode {
 
 
         // Creates a trajectory for the robot to follow
-        Trajectory myTrajectory = drive.trajectoryBuilder(new Pose2d())
-                .forward(DISTANCE1)
+        Trajectory traj1 = drive.trajectoryBuilder(new Pose2d(-61, -61, Math.toRadians(45)))
+                .lineToLinearHeading(new Pose2d(-35, -35, Math.toRadians(0)))
                 .build();
 
-        Trajectory traj2 = drive.trajectoryBuilder(new Pose2d())
-                .back(DISTANCE2)
+        Trajectory traj1b = drive.trajectoryBuilder(new Pose2d())
                 .build();
 
         // Waits for the start button to be pressed

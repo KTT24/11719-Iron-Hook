@@ -3,6 +3,7 @@ package com.example.meepmeeptesting;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.noahbres.meepmeep.MeepMeep;
 import com.noahbres.meepmeep.roadrunner.DefaultBotBuilder;
+import com.noahbres.meepmeep.roadrunner.SampleMecanumDrive;
 import com.noahbres.meepmeep.roadrunner.entity.RoadRunnerBotEntity;
 
 public class MeepMeepTesting {
@@ -11,44 +12,19 @@ public class MeepMeepTesting {
 
 
 
+
+
         RoadRunnerBotEntity myBot = new DefaultBotBuilder(meepMeep)
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
-                .setConstraints(26037.71398745077, 60, Math.toRadians(180), Math.toRadians(180), 15)
+                .setConstraints(326.725636, 26037.71398745077, Math.toRadians(150), Math.toRadians(150), 13)
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(-37.5, -62, Math.toRadians(90)))
-                                /* =================================================== */
-                                /*                    TRAJECTORY 1a                    */
-                                /*      Head to the back wall from starting spot       */
-                                /* =================================================== */
-                                .forward(25)
-                                .turn(Math.toRadians(-90))
-                                .forward(80)
-
-                                /* =================================================== */
-                                /*                    TRAJECTORY 1b                    */
-                                /*      Head to the back wall from starting spot       */
-                                /* =================================================== */
-                                /*.forward(10)
-                                .turn(Math.toRadians(45))
-                                .forward(50)
-                                .turn(Math.toRadians(-90))
-                                .forward(90)
-                                .turn(Math.toRadians(-90))
-                                .forward(30)
-                                .turn(Math.toRadians(90))
-                                .forward(12)*/
-                                // .getPixel() .getPixel() Is a custom method that will be created in the future
-                                // .placePixel(double riseHeight) Is a custom method that will be created in the future
-
-                                /* =================================================== */
-                                /*                     TRAJECTORY 2                    */
-                                /*             Hanging from the stage frame            */
-                                /* =================================================== */
-                                /*.strafeTo(new Vector2d(-34, -34))
-                                .turn(Math.toRadians(-45))
-                                .lineTo(new Vector2d(-10, -34))*/
-
-                                // Build the trajectory
+                        drive.trajectorySequenceBuilder(new Pose2d(-37, -62, 45))
+                                // Line to the first stopping point (Right in front of the stage frame)
+                                .lineToLinearHeading(new Pose2d(-35, -39, Math.toRadians(3)), SampleMecanumDrive.getVelocityConstraint(45, Math.toRadians(150), Math.toRadians(150)), SampleMecanumDrive.getAccelerationConstraint(26037.71398745077))
+                                // Line to the second stopping point (Right beghind the of the stage frame)
+                                .lineToLinearHeading(new Pose2d(12,-35,0), SampleMecanumDrive.getVelocityConstraint(45, Math.toRadians(150), Math.toRadians(150)),SampleMecanumDrive.getAccelerationConstraint(26037.71398745077))
+                                .lineToLinearHeading(new Pose2d(58,-60,0), SampleMecanumDrive.getVelocityConstraint(45, Math.toRadians(150), Math.toRadians(150)),SampleMecanumDrive.getAccelerationConstraint(26037.71398745077))
+                                // .lineToLinearHeading(new Pose2d(-37, -62, 45), SampleMecanumDrive.getVelocityConstraint(45, Math.toRadians(150), Math.toRadians(150)),SampleMecanumDrive.getAccelerationConstraint(26037.71398745077))
                                 .build()
                 );
 

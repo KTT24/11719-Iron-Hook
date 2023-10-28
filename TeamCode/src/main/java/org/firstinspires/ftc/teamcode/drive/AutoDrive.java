@@ -12,16 +12,16 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 public class AutoDrive extends LinearOpMode {
 
     public static double MAX_VELOCITY = 45.0;
+    public static double STARTING_X = -35;
+    public static double STARTING_Y = -62;
 
-    // public static double TURN = -50.0; Unused variable
-    public static double SLIDE_SPEED = 0.5;
-
-    public static double STARTING_X = -37.5;
-    public static double STARTING_Y = -33;
+    public static double START_HEADING = Math.toRadians(45);
 
     public static double ENDING_X = -35;
     public static double ENDING_Y = -35;
-    public static int TRAJECTORY_TO_FOLLOW = 1;
+    public static double ENDING_HEADING = Math.toRadians(0);
+
+    /* public static int TRAJECTORY_TO_FOLLOW = 1; */
 
     /*
 
@@ -57,27 +57,21 @@ public class AutoDrive extends LinearOpMode {
         hardwareMap.dcMotor.get("rightRear").setDirection(DcMotor.Direction.FORWARD);
 
         // Sets the starting position of the robot
-        Pose2d startPose = new Pose2d(-37, -62, 45);
+        Pose2d startPose = new Pose2d(STARTING_X, STARTING_Y, START_HEADING);
         drive.setPoseEstimate(startPose);
 
         // Prints the starting position of the robot to the driver station
         telemetry.addData("Starting Position", "%3f, %3f", drive.getPoseEstimate().getX(), drive.getPoseEstimate().getY());
 
         // Trajectory 1
-        Trajectory traj1 = drive.trajectoryBuilder(new Pose2d(-37, -62, 45))
-                .lineToLinearHeading(new Pose2d(-34, -34, 0), SampleMecanumDrive.getVelocityConstraint(MAX_VELOCITY, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH), SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
+        Trajectory traj1 = drive.trajectoryBuilder(startPose)
+                .lineToLinearHeading(new Pose2d(ENDING_X, ENDING_Y, ENDING_HEADING), SampleMecanumDrive.getVelocityConstraint(DriveConstants.MAX_VEL, DriveConstants2.MAX_ANG_VEL, DriveConstants2.TRACK_WIDTH), SampleMecanumDrive.getAccelerationConstraint(DriveConstants2.MAX_ACCEL))
                 .build();
 
-        // Trajectory 2
+        // Trajectory 2 TODO: Test for accuracy and fix cords
         Trajectory traj2 = drive.trajectoryBuilder(new Pose2d(-35, -35, 0))
-                // .lineToLinearHeading(new Pose2d(STARTING_X, STARTING_Y, 45), SampleMecanumDrive.getVelocityConstraint(MAX_VELOCITY, DriveConstants.MAX_ANG_VEL, DriveConstants.TRACK_WIDTH), SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
-                .lineToLinearHeading(new Pose2d(58,-60,0), SampleMecanumDrive.getVelocityConstraint(45, Math.toRadians(150), Math.toRadians(150)),SampleMecanumDrive.getAccelerationConstraint(26037.71398745077))
+                .lineToLinearHeading(new Pose2d(58,-60,0), SampleMecanumDrive.getVelocityConstraint(DriveConstants.MAX_VEL, Math.toRadians(150), Math.toRadians(150)),SampleMecanumDrive.getAccelerationConstraint(DriveConstants2.MAX_ACCEL))
                 .build();
-
-        // Trajectory 3 TODO: FIX THIS NOW
-        //        Trajectory traj3 = drive.trajectoryBuilder(new Pose2d(58,-60,0))
-        //                .lineToLinearHeading(new Pose2d(58,-60,0), SampleMecanumDrive.getVelocityConstraint(45, Math.toRadians(150), Math.toRadians(150)),SampleMecanumDrive.getAccelerationConstraint(26037.71398745077))
-        //                .build();
 
         // Waits for the start button to be pressed
         waitForStart();

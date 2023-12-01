@@ -1,5 +1,17 @@
 package org.firstinspires.ftc.teamcode.drive;
 
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.MAX_ACCEL;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.MAX_ANG_ACCEL;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.MAX_ANG_VEL;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.MAX_VEL;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.MOTOR_VELO_PID;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.RUN_USING_ENCODER;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.TRACK_WIDTH;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.encoderTicksToInches;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.kA;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.kStatic;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.kV;
+
 import androidx.annotation.NonNull;
 
 import com.acmerobotics.dashboard.config.Config;
@@ -36,18 +48,6 @@ import org.firstinspires.ftc.teamcode.util.LynxModuleUtil;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.MAX_ACCEL;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.MAX_ANG_ACCEL;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.MAX_ANG_VEL;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.MAX_VEL;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.MOTOR_VELO_PID;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.RUN_USING_ENCODER;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.TRACK_WIDTH;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.encoderTicksToInches;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.kA;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.kStatic;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.kV;
 
 /*
  * Simple tank drive hardware implementation for REV hardware.
@@ -289,7 +289,8 @@ public class SampleTankDrive extends TankDrive {
 
     @Override
     public Double getExternalHeadingVelocity() {
-        return (double) imu.getRobotAngularVelocity(AngleUnit.RADIANS).zRotationRate;
+return (double) -imu.getRobotAngularVelocity(AngleUnit.RADIANS).zRotationRate;
+
     }
 
     public static TrajectoryVelocityConstraint getVelocityConstraint(double maxVel, double maxAngularVel, double trackWidth) {

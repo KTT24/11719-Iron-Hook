@@ -1,0 +1,133 @@
+/*
+     * Code to run REPEATEDLY after the driver hits PLAY but before they hit STOP
+     */
+    // @Override
+    // public void loop()
+    // {
+    //     if(gamepad1.a) //this resets IMU (direction the bot thinks is forward)
+    //     {
+    //         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
+    //         imu.initialize(parameters);
+    //         face = nearestHeading(face, 0);
+    //     }
+
+
+
+    //     // Change the sign in front of the controler keyword to flip the axis.
+    //     double joy_x = (-gamepad1.left_stick_x * .7);
+    //     double joy_y = (-gamepad1.left_stick_y * .7);
+    //     double joy_w = gamepad1.right_stick_x;
+
+
+    //     //rumble variables
+    //     double endGame = 85.0;
+    //     boolean endTime = false;
+
+
+
+    //     //Controler num 2
+    //     double slide_joy = -gamepad2.left_stick_y;
+    //     //double duck_joy = gamepad2.right_stick_x;*/
+
+
+    //     double h = heading();
+    //     //this rotates the bot and keeps track of the change in movement by subtracting the angle, or adding based on movement
+    //     face -= joy_w * 7;
+
+    //     if (gamepad1.dpad_up) face = nearestHeading(face, 0);
+    //     if (gamepad1.dpad_left) face = nearestHeading(face, 90);
+    //     if (gamepad1.dpad_down) face = nearestHeading(face, 180);
+    //     if (gamepad1.dpad_right) face = nearestHeading(face, 270);
+
+
+    //     double phi = Math.toRadians(h);
+    //     double cosphi = Math.cos(phi);
+    //     double sinphi = Math.sin(phi);
+
+    //     //this looks a lot like a series of vectors, bring it to Mr Martin's attention
+    //     //and see if he sees what the correlation is
+    //     double rx = joy_x * cosphi - joy_y * sinphi;
+    //     double ry = joy_y * cosphi + joy_x * sinphi;
+
+    //     //sets the center of the robot and keeps track of it's position
+    //     double rw = (h - face) * .006;
+
+
+    //     //Sets power to the motors lf rf rr lr
+    //     //right side rw is set to a negative value'
+    //     //ry is always set to a positive value
+    //     //lr and rf rx is set to a negative value
+    //     lf.setPower((ry-rx+rw)*slowM);
+    //     rf.setPower((ry+rx-rw)*slowM);
+    //     rr.setPower((ry-rx-rw)*slowM);
+    //     lr.setPower((ry+rx+rw)*slowM);
+
+    //     if((runtime.seconds()>=endGame) && (runtime.seconds()<=endGame + 2) && !endTime)
+    //     {
+    //         gamepad1.rumble(1, 1, 500);
+    //         endTime = true;
+    //     }
+
+
+    //     // if (slide.getCurrentPosition() <= 0) {
+    //     //     slide.setPower(slide_joy - 0.25);
+    //     // } else if (slide.getCurrentPosition() >= 0 ) {
+    //     //     slide.setPower(0);
+    //     // }
+
+
+
+
+
+
+    //   if(gamepad2.left_trigger > 0)
+    //   {
+    //       intake.setPower(-armSpeed);
+    //   }
+    //   else if(gamepad2.right_trigger > 0)
+    //   {
+    //       intake.setPower(armSpeed);
+    //   }
+    //     else
+    //     {
+    //         intake.setPower(0);
+    //     }
+
+
+    //     if(gamepad1.left_trigger>0)
+    //     {
+    //         slowM = .3;
+    //     }
+    //     else if (gamepad1.right_trigger>0)
+    //     {
+    //         slowM = 2;
+    //     }
+    //     else
+    //     {
+    //         slowM = 1;
+    //     }
+
+
+    //     if(gamepad2.a == true)
+    //     {
+    //         box.setPower(1);
+    //     }
+    //     if (gamepad2.b == true )
+    //     {
+    //         box.setPower(0);
+    //     }
+
+    //     //telemetry.addData("heading", heading());
+    //     //telemetry.addData("\nDuck Power", "%.2f", ducks.getPower());
+    //     telemetry.addData("\nintake", "%.2f", intake.getPower());
+    //     //telemetry.addData("\nArmB", "%.2f", armB.getPower());
+    //     //telemetry.addData("\nbox Postition", boxX.getPower());
+
+    //     //telemetry.addData("\nDuck Port", ducks.getPortNumber());
+    //     telemetry.addData("\nintake Postition", intake.getCurrentPosition());
+    //     telemetry.addData("/nSlide Position", slide.getCurrentPosition());
+    //     //telemetry.addData("\nArmB Postition", armB.getCurrentPosition());
+    //     //telemetry.addData("Is Pressed","%b", touch.isPressed());*/
+    //     telemetry.update();
+
+    // }

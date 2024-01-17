@@ -1,11 +1,11 @@
 package org.firstinspires.ftc.teamcode.drive.opmode;
 
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.MAX_ACCEL;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.MAX_VEL;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.RUN_USING_ENCODER;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.kA;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.kStatic;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.kV;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants.MAX_ACCEL;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants.MAX_VEL;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants.RUN_USING_ENCODER;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants.kA;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants.kStatic;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants.kV;
 
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.config.Config;

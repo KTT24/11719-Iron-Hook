@@ -1,16 +1,16 @@
 package org.firstinspires.ftc.teamcode.drive;
 
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.MAX_ACCEL;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.MAX_ANG_ACCEL;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.MAX_ANG_VEL;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.MAX_VEL;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.MOTOR_VELO_PID;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.RUN_USING_ENCODER;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.TRACK_WIDTH;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.encoderTicksToInches;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.kA;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.kStatic;
-import static org.firstinspires.ftc.teamcode.drive.DriveConstants2.kV;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants.MAX_ACCEL;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants.MAX_ANG_ACCEL;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants.MAX_ANG_VEL;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants.MAX_VEL;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants.MOTOR_VELO_PID;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants.RUN_USING_ENCODER;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants.TRACK_WIDTH;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants.encoderTicksToInches;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants.kA;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants.kStatic;
+import static org.firstinspires.ftc.teamcode.drive.DriveConstants.kV;
 
 import androidx.annotation.NonNull;
 
@@ -122,16 +122,16 @@ public class SampleMecanumDrive extends MecanumDrive {
 
         // TODO: reverse any motors using DcMotor.setDirection()
         hardwareMap.dcMotor.get("leftFront").setDirection(DcMotor.Direction.FORWARD);
-        hardwareMap.dcMotor.get("leftRear").setDirection(DcMotor.Direction.REVERSE);
+        hardwareMap.dcMotor.get("leftRear").setDirection(DcMotor.Direction.FORWARD);
         hardwareMap.dcMotor.get("rightFront").setDirection(DcMotor.Direction.REVERSE);
-        hardwareMap.dcMotor.get("rightRear").setDirection(DcMotor.Direction.FORWARD);
+        hardwareMap.dcMotor.get("rightRear").setDirection(DcMotor.Direction.REVERSE);
 
 
         List<Integer> lastTrackingEncPositions = new ArrayList<>();
         List<Integer> lastTrackingEncVels = new ArrayList<>();
 
         // TODO: if desired, use setLocalizer() to change the localization method
-            setLocalizer(new StandardTrackingWheelLocalizer(hardwareMap, lastTrackingEncPositions, lastTrackingEncVels));
+        setLocalizer(new StandardTrackingWheelLocalizer(hardwareMap, lastTrackingEncPositions, lastTrackingEncVels));
 
         trajectorySequenceRunner = new TrajectorySequenceRunner(
                 follower, HEADING_PID, batteryVoltageSensor,

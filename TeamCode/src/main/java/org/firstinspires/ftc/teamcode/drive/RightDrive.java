@@ -8,6 +8,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Servo;
 
+import org.openftc.easyopencv.OpenCvCamera;
+
 @Autonomous(name = "RightDrive", group = "Testing OpModes")
 public class RightDrive extends LinearOpMode {
     private DcMotor leftFront = null;
@@ -18,8 +20,37 @@ public class RightDrive extends LinearOpMode {
     private DcMotor intake = null;
     private Servo trapDoor = null;
 
+    private OpenCvCamera camera;
+    private double fx = 578.272;
+    private double fy = 578.272;
+    private double cx = 402.145;
+    private double cy = 221.506;
+
+
     @Override
     public void runOpMode() throws InterruptedException {
+
+//        int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
+//        camera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
+//
+//        camera.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener()
+//        {
+//            @Override
+//            public void onOpened()
+//            {
+//                camera.startStreaming(800,448, OpenCvCameraRotation.UPRIGHT);
+//                FtcDashboard.getInstance().startCameraStream(camera, 120);
+//            }
+//
+//            @Override
+//            public void onError(int errorCode)
+//            {
+//
+//            }
+//        });
+//
+//        telemetry.setMsTransmissionInterval(50);
+
         // Creates the drive object form the SampleMecanumDrive class
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
@@ -45,6 +76,8 @@ public class RightDrive extends LinearOpMode {
 
         // Sets the starting position of the robot
         Pose2d startPose = new Pose2d(-35,60, Math.toRadians(90));
+        drive.setPoseEstimate(startPose);
+
 
         Trajectory traj1 = drive.trajectoryBuilder(startPose)
                 .lineToLinearHeading(new Pose2d(-35, 35, Math.toRadians(0)))

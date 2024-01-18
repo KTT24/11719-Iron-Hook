@@ -30,6 +30,7 @@ import com.acmerobotics.roadrunner.trajectory.constraints.ProfileAccelerationCon
 import com.acmerobotics.roadrunner.trajectory.constraints.TrajectoryAccelerationConstraint;
 import com.acmerobotics.roadrunner.trajectory.constraints.TrajectoryVelocityConstraint;
 import com.qualcomm.hardware.lynx.LynxModule;
+import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -55,7 +56,7 @@ public class SampleMecanumDrive extends MecanumDrive {
     public static PIDCoefficients TRANSLATIONAL_PID = new PIDCoefficients(0, 0, 0);
     public static PIDCoefficients HEADING_PID = new PIDCoefficients(0, 0, 0);
 
-    public static double LATERAL_MULTIPLIER = 1;
+    public static double LATERAL_MULTIPLIER = 0.675;
 
     public static double VX_WEIGHT = 1;
     public static double VY_WEIGHT = 1;
@@ -91,11 +92,10 @@ public class SampleMecanumDrive extends MecanumDrive {
             module.setBulkCachingMode(LynxModule.BulkCachingMode.AUTO);
         }
 
-//         TODO: adjust the names of the following hardware devices to match your configuration
-//        imu = hardwareMap.get(IMU.class, "imu");
-//        IMU.Parameters parameters = new IMU.Parameters(new RevHubOrientationOnRobot(
-//                DriveConstants.LOGO_FACING_DIR, DriveConstants.USB_FACING_DIR));
-//        imu.initialize(parameters);
+        imu = hardwareMap.get(IMU.class, "imu");
+        IMU.Parameters parameters = new IMU.Parameters(new RevHubOrientationOnRobot(
+                DriveConstants.LOGO_FACING_DIR, DriveConstants.USB_FACING_DIR));
+        imu.initialize(parameters);
 
         leftFront = hardwareMap.get(DcMotorEx.class, "leftFront");
         leftRear = hardwareMap.get(DcMotorEx.class, "leftRear");

@@ -63,24 +63,18 @@ public class RightDrive extends LinearOpMode {
         //intake = hardwareMap.get(DcMotor.class, "intake");
 
         // Initialize servos
-        //trapDoor = hardwareMap.get(Servo.class, "box");
-
-        // TODO: reverse any motors using DcMotor.setDirection()
-        hardwareMap.dcMotor.get("leftFront").setDirection(DcMotor.Direction.FORWARD);
-        hardwareMap.dcMotor.get("leftRear").setDirection(DcMotor.Direction.REVERSE);
-        hardwareMap.dcMotor.get("rightFront").setDirection(DcMotor.Direction.REVERSE);
-        hardwareMap.dcMotor.get("rightRear").setDirection(DcMotor.Direction.FORWARD);
+        //trapDoor = hardwareMap.get(Servo.class, "box")
 
 
         waitForStart();
 
         // Sets the starting position of the robot
-        Pose2d startPose = new Pose2d(-35,60, Math.toRadians(90));
+        Pose2d startPose = new Pose2d(-35,60, Math.toRadians(0));
         drive.setPoseEstimate(startPose);
 
 
         Trajectory traj1 = drive.trajectoryBuilder(startPose)
-                .lineToLinearHeading(new Pose2d(-35, 35, Math.toRadians(0)))
+                .lineToLinearHeading(new Pose2d(-35,0,Math.toRadians(270)))
                 .build();
 
 //        Trajectory traj2 = drive.trajectoryBuilder(traj1.end())

@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
+
 @Autonomous(name = "LeftDrive", group = "Testing OpModes")
 public class LeftDrive extends LinearOpMode {
     private DcMotor leftFront = null;
@@ -28,11 +29,6 @@ public class LeftDrive extends LinearOpMode {
         slide = hardwareMap.get(DcMotor.class, "slide");
         intake = hardwareMap.get(DcMotor.class, "intake");
 
-        // TODO: reverse any motors using DcMotor.setDirection()
-        hardwareMap.dcMotor.get("leftFront").setDirection(DcMotor.Direction.FORWARD);
-        hardwareMap.dcMotor.get("leftRear").setDirection(DcMotor.Direction.REVERSE);
-        hardwareMap.dcMotor.get("rightFront").setDirection(DcMotor.Direction.REVERSE);
-        hardwareMap.dcMotor.get("rightRear").setDirection(DcMotor.Direction.FORWARD);
 
 
         waitForStart();

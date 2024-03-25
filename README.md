@@ -31,8 +31,3 @@ This repo is licensed under the Apache 2.0 Open Source License. Please see the `
 <a href="https://github.com/KTT24/1719-Iron-Hook/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=KTT24/1719-Iron-Hook" />
 </a>
-
-
-
-
-
